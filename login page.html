@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<style>
+		body {
+			background-color: rgb(255,255,232);
+			font-family: Arial, sans-serif;
+			background-image: url("logo-hm.png");
+			background-repeat: no-repeat;
+		}
+
+		form {
+			background-color: rgb(255, 0, 76);
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+			width: 300px;
+			margin: 0 auto;
+			margin-top: 100px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		input[type="text"], input[type="password"] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: none;
+			border-bottom: 2px solid #ccc;
+		}
+
+		button {
+			background-color: rgb(247,231,206);
+			color: rgb(3, 3, 3);
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 100%;
+		}
+
+		button:hover {
+			background-color: #45a049;
+		}
+
+		.error {
+			color: red;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<h1>Login</h1>
+		<div class="error"></div>
+		<label for="username">Username</label>
+		<input type="text" id="username" name="username" required>
+
+		<label for="password">Password</label>
+		<input type="password" id="password" name="password" required>
+
+		<button type="submit">Login</button>
+	</form>
+</body>
+</html>

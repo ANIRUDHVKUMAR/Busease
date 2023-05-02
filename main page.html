@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Boarding Pass</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: rgb(255, 0, 76);
+			background-image: url("logo-hm.png");
+			background-repeat: no-repeat;
+		}
+		.ticket {
+			background-color: rgb(255,255,232);
+			border: 1px solid #ccc;
+			padding: 20px;
+			max-width: 600px;
+			margin: 0 auto;
+			position: relative;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+			border-radius: 10px;
+			margin-top: 50px;
+			color: #333;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+		.ticket:before {
+			content: '';
+			position: absolute;
+			top: -20px;
+			left: 50%;
+			transform: translateX(-50%);
+			border-top: 20px solid #ccc;
+			border-right: 20px solid transparent;
+			border-left: 20px solid transparent;
+			border-bottom: none;
+		}
+		h1 {
+			margin-top: 0;
+			font-size: 28px;
+			font-weight: bold;
+			text-align: center;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+		.row {
+			display: flex;
+			margin-bottom: 10px;
+		}
+		.row label {
+			flex-basis: 150px;
+			font-weight: bold;
+			margin-right: 10px;
+		}
+		.row span {
+			flex-grow: 1;
+			word-wrap: break-word;
+			text-align: left;
+			display: block;
+			text-transform: capitalize;
+		}
+
+
+		.busdetails {
+			background-color: rgb(255,255,232);
+			border: 1px solid #ccc;
+			padding: 20px;
+			max-width: 600px;
+			margin: 0 auto;
+            position: relative;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+			border-radius: 10px;
+			margin-top: 50px;
+			color: #333;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+	</style>
+</head>
+<body>
+	<div class="ticket">
+		<h1><u>Boarding Pass</u></h1>
+		<div class="row">
+			<label><u>Name:</u></label>
+			<span><b>ANIRUDH V KUMAR</b></span>
+		</div>
+		<div class="row">
+			<label><u>Registration ID:</u></label>
+			<span><b>SCS/9192/21</b></span>
+		</div>
+		<div class="row">
+			<label><u>Boarding Point:</u></label>
+			<span><b>Kaloor</b></span>
+		</div>
+		<div class="row">
+			<label><u>Bus No:</u></label>
+			<span><b>08</b></span>
+		</div>
+	</div>
+
+
+	<div class="busdetails">
+		<h1><u>Bus Details</u></h1>
+		<div class="row">
+			<label><u>Driver's Name:</u></label>
+			<span><b>Joseph</b></span>
+		</div>
+		<div class="row">
+			<label><u>Contact Number:</u></label>
+			<span><b>9XXXXXXXX6</b></span>
+		</div>
+		<div class="row">
+			<label><u>Starting Point:</u></label>
+			<span><b>HighCourt</b></span>
+		</div>
+		<div class="row">
+			<label><u>Starting Time:</u></label>
+			<span><b>07:20 AM</b></span>
+		</div>
+		<div class="row">
+			<label><u>Fee:</u></label>
+			<span><b>Rs 2496/per month</b></span>
+		</div>
+	</div>
+</body>
+</html>
