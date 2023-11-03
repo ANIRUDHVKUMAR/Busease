@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bus Details</title>
+  <style>
+    /* CSS styling for the page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      background-image: url(./images/detail_bg.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    label {
+      font-weight: bold;
+    }
+    
+    select {
+      margin-bottom: 10px;
+      width: 200px;
+      padding: 5px;
+    }
+    
+    #bus-details {
+      display: none;
+      margin-top: 20px;
+    }
+    
+    #driver-starting {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #e0e0e0;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    #driver-name, #starting-point {
+      margin: 0;
+    }
+    
+    #stop-points {
+      background-color: #f2f2f2;
+      padding: 10px;
+    }
+    
+    .stop-point {
+      background-color: #f2f2f2;
+      padding: 10px;
+      margin-bottom: 5px;
+    }
+    
+    .stop-point:nth-child(even) {
+      background-color: #e0e0e0;
+    }
+    
+    .stop-point:last-child {
+      margin-bottom: 0;
+    }
+    
+    #bus-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 250px;
+      z-index: 999;
+      padding-top: 30px;
+      padding-left: 20px;
+    }
+    
+    .input_bus_no {
+      padding-top: 20px;
+      padding-left: 20px;
+    }
+    
+    .search-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .search-input {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    #stoppoint-dropdown {
+      position: absolute;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      max-height: 200px;
+      overflow-y: auto;
+      width: 200px;
+      margin-top: 5px;
+    }
+    
+    #stoppoint-dropdown .dropdown-item {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    
+    #stoppoint-dropdown .dropdown-item:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Bus Details</h1>
+  </div>
+  
+  <div class="input_bus_no">
+    <label for="bus-no">Select Bus No:</label>
+    <select id="bus-no" onchange="showBusDetails()">
+      <option value="">Select</option>
+      <option value="bus5">Bus 5</option>
+      <option value="bus8">Bus 8</option>
+      <option value="bus15">Bus 15</option>
+      <option value="bus26">Bus 26</option>
+      <option value="bus28">Bus 28</option>
+    </select>
+  </div>
+  
+  <div id="bus-details">
+    <div id="driver-starting">
+      <p><span id="driver-name"></span> | <span id="starting-point"></span></p>
+    </div>
+    <div id="stop-points"></div>
+  </div>
+  
+  <div class="search-container">
+    <div class="search-input">
+      <label for="search-input">Search Stop Points:</label>
+      <input type="text" id="search-input" placeholder="Enter stop point name">
+      <div id="stoppoint-dropdown"></div>
+    </div>
+    <div class="bus-output">
+      <label for="bus-output">Bus Number:</label>
+      <input type="text" id="bus-output" readonly>
+    </div>
+  </div>
+  
+  <script>
+    // JavaScript logic to display bus details based on the selected bus number
+    function showBusDetails() {
+      var busNo = document.getElementById("bus-no").value;
+      var driverName = "";
+      var startingPoint = "";
+      var stopPoints = [];
+      
+      // Set the details based on the selected bus number
+      if (busNo === "bus26") {
+        driverName = "Driver: Murali";
+        startingPoint = "Staring Point: Kodungallur";
+        stopPoints = ["Southndada","Poyya","Mala", "Annamanda", "Koratty"];
+      } else if (busNo === "bus28") {
+        driverName = "Driver: John";
+        startingPoint = "Staring Point: Paravur";
+        stopPoints = ["Paravur", "Kottapuram","T. K. S Puram", "Poyya", "Valiyaparamb"];
+      } else if (busNo === "bus15") {
+        driverName = "Driver: Tom";
+        startingPoint = "Staring Point: Thrissur";
+        stopPoints = ["Thrissur","Puthukkad ", "Nadathara","Kodakara", "Chalakudy"];
+      }else if (busNo === "bus5") {
+        driverName= "Driver: Sebastian",
+        startingPoint = "Starting Point: Statue Junction",
+        stopPoints = ["Statue Junction", "Tripunithara", "Irumpanam", "HMT", "Kalamassery"]
+      }
+      else if (busNo === "bus8") {
+        driverName = "Driver: Chcako",
+        startingPoint = "Starting Point: Highcourt",
+        stopPoints = ["Highcourt", "Lissy", "Kaloor", "Edappaly", "Aluva"]
+      }
+      
+      
+      // Update the bus details on the page
+      document.getElementById("driver-name").textContent = driverName;
+      document.getElementById("starting-point").textContent = startingPoint;
+      
+      var stopPointsContainer = document.getElementById("stop-points");
+      stopPointsContainer.innerHTML = ""; // Clear previous stop points
+      
+      // Create and append boxes for each stop point
+      for (var i = 0; i < stopPoints.length; i++) {
+        var stopPointBox = document.createElement("div");
+        stopPointBox.classList.add("stop-point");
+        stopPointBox.textContent = stopPoints[i];
+        stopPointsContainer.appendChild(stopPointBox);
+      }
+      
+      // Show the bus details section
+      document.getElementById("bus-details").style.display = "block";
+    }
+
+    // JavaScript logic for searching bus by stop point
+    var allBusDetails = [
+      {
+        busNo: "bus26",
+        stopPoints: ["Southndada", "Poyya", "Mala", "Annamanda", "Koratty"]
+      },
+      {
+        busNo: "bus28",
+        stopPoints: ["Paravur", "Kottapuram", "T. K. S Puram", "Poyya", "Valiyaparamb"]
+      },
+      {
+        busNo: "bus15",
+        stopPoints: ["Thrissur", "Puthukkad", "Nadathara", "Kodakara", "Chalakudy"]
+      },
+      {
+        busNo: "bus8",
+        stopPoints: ["Highcourt", "Lissy", "Kaloor", "Edappaly", "Aluva"]
+      },
+      {
+        busNo: "bus5",
+        stopPoints: ["Statue Junction", "Tripunithara", "Irumpanam", "HMT", "Kalamassery"]
+      }
+
+
+    ];
+
+    function searchBusByStopPoint() {
+      var searchInput = document.getElementById("search-input").value.toLowerCase();
+      var busOutput = document.getElementById("bus-output");
+      busOutput.value = ""; // Clear previous output
+
+      var matchingBuses = allBusDetails.filter(function(bus) {
+        return bus.stopPoints.some(function(stopPoint) {
+          return stopPoint.toLowerCase().indexOf(searchInput) !== -1;
+        });
+      });
+
+      if (matchingBuses.length > 0) {
+        busOutput.value = matchingBuses.map(function(bus) {
+          return bus.busNo;
+        }).join(", ");
+      } else {
+        busOutput.value = "No buses found";
+      }
+    }
+
+    // Event listener for search input
+    var searchInput = document.getElementById("search-input");
+    var stoppointDropdown = document.getElementById("stoppoint-dropdown");
+
+    searchInput.addEventListener("input", function() {
+      var searchValue = searchInput.value.toLowerCase();
+      var matchingStopPoints = [];
+
+      if (searchValue.length > 0) {
+        matchingStopPoints = allBusDetails.reduce(function(acc, bus) {
+          var filteredStopPoints = bus.stopPoints.filter(function(stopPoint) {
+            return stopPoint.toLowerCase().startsWith(searchValue);
+          });
+          return acc.concat(filteredStopPoints);
+        }, []);
+      }
+
+      stoppointDropdown.innerHTML = "";
+
+      if (matchingStopPoints.length > 0) {
+        matchingStopPoints.forEach(function(stopPoint) {
+          var dropdownItem = document.createElement("div");
+          dropdownItem.classList.add("dropdown-item");
+          dropdownItem.textContent = stopPoint;
+          dropdownItem.addEventListener("click", function() {
+            searchInput.value = stopPoint;
+            searchBusByStopPoint();
+            stoppointDropdown.innerHTML = "";
+          });
+          stoppointDropdown.appendChild(dropdownItem);
+        });
+        stoppointDropdown.style.display = "block";
+      } else {
+        stoppointDropdown.style.display = "none";
+      }
+    });
+
+    // Close the dropdown when clicking outside
+    window.addEventListener("click", function(event) {
+      if (!searchInput.contains(event.target)) {
+        stoppointDropdown.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

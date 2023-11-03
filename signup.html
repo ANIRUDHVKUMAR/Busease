@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup Page</title>
+	<link rel="stylesheet" href="./stylelogin.css">
+</head>
+<body class="loginbody">
+	<form class="signupform">
+		<label for="username">Username:</label>
+		<input type="text" id="username"><br><br>
+		<label for="password">Password:</label>
+		<input type="password" id="password"><br><br>
+		<label for="name">Name:</label>
+		<input type="text" id="name"><br><br>
+		<label for="register-no">Register No:</label> <!-- Added register number label -->
+		<input type="text" id="register-no"><br><br> <!-- Added register number input field -->
+		<label for="bus-number">Bus Number:</label>
+		<input type="text" id="bus-number"><br><br>
+		<label for="boarding-point">Boarding Point:</label>
+		<input type="text" id="boarding-point"><br><br>
+		<button type="button" id="signup-button" onclick="signup()">Sign Up</button>
+		<button type="button" id="back-button" onclick="navigateToLogin()">Back</button>
+	</form>
+	<img class="loginlogo" src="images/logo-no-background.png">
+
+	<script>
+		function signup() {
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+			var name = document.getElementById("name").value;
+			var registerNo = document.getElementById("register-no").value; // Added register number variable
+			var busNumber = document.getElementById("bus-number").value;
+			var boardingPoint = document.getElementById("boarding-point").value;
+			
+			// Create a user object
+			var user = {
+				username: username,
+				password: password,
+				name: name,
+				registerNo: registerNo, // Added register number field
+				busNumber: busNumber,
+				boardingPoint: boardingPoint
+			};
+			
+			// Store the user object in local storage
+			localStorage.setItem("user", JSON.stringify(user));
+			
+			// Inform the user about successful signup
+			alert("Signup successful! Please login with your credentials.");
+			
+			// Redirect to the login page
+			window.location.href = "login page.html";
+		}
+
+		function navigateToLogin() {
+			window.location.href = "login page.html";
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<link rel="stylesheet" href="./stylelogin.css">
+</head>
+<body class="loginbody">
+	<form class="loginform">
+		<label for="username">Username:</label>
+		<input type="text" id="username"><br><br>
+		<label for="password">Password:</label>
+		<input type="password" id="password"><br><br>
+		<button type="button" id="login-button" onclick="login()">Login</button>
+		<button type="button" id="signup-button" onclick="navigateToSignup()">Sign Up</button>
+		<button type="button" id="guest-button" onclick="guestLogin()">Guest Login</button>
+	</form>
+	<img class="loginlogo" src="images/logo-no-background.png">
+
+	<script>
+		function login() {
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+			var user = JSON.parse(localStorage.getItem("user"));
+
+			if (user && user.username === username && user.password === password) {
+				window.location.href = "mainpage.html";
+			} else {
+				alert("Invalid username or password. Please try again.");
+			}
+		}
+
+		function navigateToSignup() {
+			window.location.href = "signup.html";
+		}
+
+		function guestLogin() {
+			window.location.href = "mainpage_guest.html";
+		}
+	</script>
+</body>
+</html>
